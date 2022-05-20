@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/zhuce/zhuce",
+    "pages/xiugai/xiugai",
+    "pages/xiugai2/xiugai2",
+    "pages/dengji2/dengji2",
+    "pages/room/room",
+    "pages/room1/room1",
+    "pages/list/list",
+    "pages/paihang-room/paihang-room",
+    "pages/fankui/fankui"
+    
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#987938",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/dengji2/dengji2",
+        "text": "登记",
+        "iconPath": "images/record2.jpg",
+        "selectedIconPath": "images/record1.jpg"
+      },
+   
+      {
+        "pagePath": "pages/room1/room1",
+        "text": "房间",
+        "iconPath": "images/room2.jpg",
+        "selectedIconPath": "images/room1.jpg"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "排行",
+        "iconPath": "images/paihang2.png",
+        "selectedIconPath": "images/paihang1.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+  
+}

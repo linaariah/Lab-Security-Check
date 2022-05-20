@@ -1,0 +1,680 @@
+<!--pages/room1/room1.wxml-->
+<view class="divline"></view>
+<view class="style">
+
+
+   <view class="s1">
+      <view class="s2">{{name1}}</view>
+      <button class="button1" bindtap="login1">注销</button>
+   </view>
+   <view class="divline1"></view>
+
+   <input class="text" placeholder="搜索房间号(如JXC303)或时间(如2021/11/28)" bindinput='query1'></input>
+
+   <view class="area1">
+
+      <scroll-view scroll-y="{{true}}" style="height:200vh" bindscrolltolower='scrollBottom'>
+         <view class="word-line" wx:for="{{hot_words}}" wx:for-index="idx" wx:for-item="itemName" style='{{idx == hot_words.length-1 ? "" : "border-bottom : 4rpx solid #987938;"}}'>
+            <view class="jiance" >
+               <view class="word-content">
+                  <view class="word-hot" style="color: blue;">{{itemName.time}}</view>
+                  <view class="word-hot" style="color: blue;">{{itemName.room}}</view>
+               </view>
+
+               <view class="jtwt" style='{{itemName.k11+itemName.k12+itemName.k13+itemName.k14+itemName.k15+itemName.k16+itemName.k21+itemName.k22+itemName.k23+itemName.k24+itemName.k31+itemName.k32+itemName.k33+itemName.k41+itemName.k42 == 30 ? "display:none": "display:true" }}'>
+                  <view class="zhj">
+                     <view class="bt1">问题和图片</view>
+                     <button class="button2" style='font-size: 30rpx;display: flex;align-items: center;justify-content: center;' bindtap="shanc" data-id="{{itemName._id}}" data-room="{{itemName.room}}"  data-sum="{{itemName.sum}}">删除</button>
+                  </view>
+
+                  <view class="bt2">
+                     <view class="word-hot2">
+                        <textarea class="text11" value="{{itemName.pro}}" maxlength="-1" disabled="flase" style='{{itemName.pro == "" ? "display:none": "display:true" }}'></textarea>
+                     </view>
+                  </view>
+                  <view class="tup">
+                     <view wx:for="{{itemName.fileIDs}}" wx:key="index" class="pict1">
+                        <image class="c" bindtap="preview" src="{{item}}" data-src="{{item}}" data-id="{{itemName._id}}"></image>
+                     </view>
+                  </view>
+                  <view class="zuida">
+   <view >
+     <button bindtap="onChangeShowState1"  style='{{itemName.k11+itemName.k12+itemName.k13+itemName.k14==8 ? "color : black":"color : red"}}'>{{showView?'1.规章制度':'1.规章制度'}}</button>
+   </view>
+   <view class="{{showView1?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+            </view>
+            <view class="er1">(1)没有或不健全符合学科实际的安全管理制度、安全自查制度和值班值日制度，并没有自查和值日台本记录。(1分)</view>
+            <view class="er1">(2)没有危险性实验及仪器操作规程，未张贴安全注意事项，没有张贴适合本实验室及实验工作突发性事故的应急预案。(1分)</view>
+            <view class="er1">(3)实验室房间门口未挂有安全信息牌(安全责任人、涉及危险类别、防护措施和有效应急联系电话等)或信息不准确。(1分)</view>
+            <view class="er1">(4)学生进入实验室开展实验前，未取得通过学院实验室安全培训或学校安全网考试而核发的实验室准入证。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san11">
+                     <view class="picker" style='{{itemName.k11 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k11]}}
+                              </view>
+                  </view>
+                  <view class="san12">
+                     <view class="picker" style='{{itemName.k12 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k12]}}
+                              </view>
+                  </view>
+                  <view class="san13">
+                     <view class="picker" style='{{itemName.k13 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k13]}}
+                              </view>
+                  </view>
+                  <view class="san14">
+                     <view class="picker" style='{{itemName.k14 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k14]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第二部分 -->
+   <view >
+     <button bindtap="onChangeShowState2" style='{{itemName.k21+itemName.k22+itemName.k23+itemName.k24+itemName.k25+itemName.k26==12 ? "color : black":"color : red"}}'>{{showView?'2.环境秩序':'2.环境秩序'}}</button>
+   </view>
+   <view class="{{showView2?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)实验室物品不分类放置，台面、柜内药品摆放杂乱，仪器设备、材料、工具等摆放零乱。(3分)</view>
+            <view class="er1">(2)实验室内废弃的物品(如纸板箱、报废设备、破旧家具桌椅等)未及时处理或清理的现象。(2分)</view>
+            <view class="er1">(3)实验室内有抽烟、饮食、烧煮食物、使用可燃性蚊香等现象。(3分)</view>
+            <view class="er1">(4)实验室内堆放或存放与实验无关的私人物品。(2分)</view>
+            <view class="er1">(5)实验室门窗、地面、桌面卫生差。(2分)</view>
+            <view class="er1">(6)未将实验室钥匙或门禁密钥备份至学院办公室(值班室)。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san21">
+                     <view class="picker" style='{{itemName.k21 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k21]}}
+                              </view>
+                  </view>
+                  <view class="san22">
+                     <view class="picker" style='{{itemName.k22== 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k22]}}
+                              </view>
+                  </view>
+                  <view class="san23">
+                     <view class="picker" style='{{itemName.k23 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k23]}}
+                              </view>
+                  </view>
+                  <view class="san24">
+                     <view class="picker" style='{{itemName.k24 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k24]}}
+                              </view>
+                  </view>
+                  <view class="san25">
+                     <view class="picker" style='{{itemName.k25 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k25]}}
+                              </view>
+                  </view>
+                  <view class="san26">
+                     <view class="picker" style='{{itemName.k26 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k26]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第三部分 -->
+   <view >
+     <button bindtap="onChangeShowState3" style='{{itemName.k31+itemName.k32+itemName.k33+itemName.k34==8 ? "color : black":"color : red"}}'>{{showView?'3.消防安全':'3.消防安全'}}</button>
+   </view>
+   <view class="{{showView3?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+         </view>
+         <view class="er1">(1)实验室内消防器材(包括灭火器、灭火毯、急救药箱、消防锤、消防自救呼吸器等)未按要求数量配置或类型配置不正确、位置设置不合适。(6分)</view>
+            <view class="er1">(2)灭火器存在过期、压力不足、外观损坏锈蚀、被遮挡等现象，未及时检查记录并更换。(3分)</view>
+            <view class="er1">(3)消防疏散通道、安全出口堆放仪器、杂物、停放电动车、自行车、手推车等影响畅通，门窗上设置影响逃生和灭火救援的障碍物。(6分)</view>
+            <view class="er1">(4)实验室内未经允许(报备)使用明火电炉以及使用大功率取暖电器现象。(12分)</view>
+         </view>
+         <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san31">
+                     <view class="picker" style='{{itemName.k31== 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k31]}}
+                              </view>
+                  </view>
+                  <view class="san32">
+                     <view class="picker" style='{{itemName.k32 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k32]}}
+                              </view>
+                  </view>
+                  <view class="san33">
+                     <view class="picker" style='{{itemName.k33 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k33]}}
+                              </view>
+                  </view>
+                  <view class="san34">
+                     <view class="picker" style='{{itemName.k34 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k34]}}
+                              </view>
+                  </view>
+         </view>
+      </view>
+   </view>
+<!-- 第四部分 -->
+   <view >
+     <button bindtap="onChangeShowState4" style='{{itemName.k41+itemName.k42+itemName.k43+itemName.k44+itemName.k45==10 ? "color : black":"color : red"}}'>{{showView?'4.水电安全':'4.水电安全'}}</button>
+   </view>
+   <view class="{{showView4?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+      <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+            </view>
+            <view class="er1">(1)存在水槽损坏、下水道堵塞现象；使用水龙头、水管、皮管(特别是冷凝冷却系统的橡胶管接口处)存在破损、老化现象；存在自来水开着无人在岗现象。(3分)</view>
+            <view class="er1">(2)电线老化、插头破损、插头插座不匹配或多个接线板串联及接线板未固定直接放在地面的现象。(8分)</view>
+            <view class="er1">(3) 私拉电线、私自改装电源线路。(12分)</view>
+            <view class="er1">(4)高压、大电流等强电实验室未设定安全距离，未按规定设置安全警示牌、安全信号灯、联动式警铃、门锁，未设有安全隔离装置或屏蔽遮拦。(4分)</view>
+            <view class="er1">(5)强电设备在断电操作时，未在电源箱处设置明显警示标识(防止他人随意合闸)。(4分)</view>
+      </view>
+         <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san41">
+                     <view class="picker" style='{{itemName.k41 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k41]}}
+                              </view>
+                  </view>
+                  <view class="san42">
+                     <view class="picker" style='{{itemName.k42 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k42]}}
+                              </view>
+                  </view>
+                  <view class="san43">
+                     <view class="picker" style='{{itemName.k43 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k43]}}
+                              </view>
+                  </view>
+                  <view class="san44">
+                     <view class="picker" style='{{itemName.k44 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k44]}}
+                              </view>
+                  </view>
+                  <view class="san45">
+                     <view class="picker" style='{{itemName.k45 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k45]}}
+                              </view>
+                  </view>
+         </view>
+      </view>
+   </view>
+<!-- 第五部分 -->
+   <view >
+     <button bindtap="onChangeShowState5" style='{{itemName.k51+itemName.k52+itemName.k53+itemName.k54+itemName.k55+itemName.k56+itemName.k57+itemName.k58+itemName.k59==18 ? "color : black":"color : red"}}'>{{showView?'5.化学试剂':'5.化学试剂'}}</button>
+   </view>
+   <view class="{{showView5?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)使用的试剂存放不符合安全保管条件，实验室内未张贴使用化学品目录或台帐。(3分)</view>
+            <view class="er1">(2)使用的危险化学品或放射性物质或致病性微生物未按照有关规定存放在安全位置(如加锁的专用柜子或专门的贮存室)，并未设危险警示标志。(8分)</view>
+            <view class="er1">(3)存在标签脱落、模糊或无标签的化学试剂等现象。(3分)</view>
+            <view class="er1">(4)存在试剂瓶盖开口放置的现象。(3分)</view>
+            <view class="er1">(5)有过期试剂或药品。(2分)</view>
+            <view class="er1">(6)50米2实验室内存放危化品超过100L或100kg，其中易燃易爆性化学品超过50L或50kg，且单一包装容器大于20L或20kg的现象。(6分)</view>
+            <view class="er1">(7)管制类(剧毒、易制毒、易制爆、爆炸品、麻醉药品、精神药品、医疗用毒性药品等)试剂未设专人保管、使用无明细登记台账、安全防范措施不到位等现象。(6分)</view>
+            <view class="er1">(8)剧毒品、易制毒品、易制爆品和爆炸品等购买前未经学校审批，未经公安部门批准或备案。私自接收或获取外单位上述管制类化学品。(12分)</view>
+            <view class="er1">(9)存在未经报备的试剂药品。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san51">
+                     <view class="picker" style='{{itemName.k51 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k51]}}
+                              </view>
+                  </view>
+                  <view class="san52">
+                     <view class="picker" style='{{itemName.k52 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k52]}}
+                              </view>
+                  </view>
+                  <view class="san53">
+                     <view class="picker" style='{{itemName.k53 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k53]}}
+                              </view>
+                  </view>
+                  <view class="san54">
+                     <view class="picker" style='{{itemName.k54 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k54]}}
+                              </view>
+                  </view>
+                  <view class="san55">
+                     <view class="picker" style='{{itemName.k55 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k55]}}
+                              </view>
+                  </view>
+                  <view class="san56">
+                     <view class="picker" style='{{itemName.k56 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k56]}}
+                              </view>
+                  </view>
+                  <view class="san57">
+                     <view class="picker" style='{{itemName.k57 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k57]}}
+                              </view>
+                  </view>
+                  <view class="san58">
+                     <view class="picker" style='{{itemName.k58 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k58]}}
+                              </view>
+                  </view>
+                  <view class="san59">
+                     <view class="picker" style='{{itemName.k59 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k59]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第六部分 -->
+   <view >
+     <button bindtap="onChangeShowState6" style='{{itemName.k61+itemName.k62+itemName.k63+itemName.k64+itemName.k65+itemName.k66==12 ? "color : black":"color : red"}}'>{{showView?'6.三废排放':'6.三废排放'}}</button>
+   </view>
+   <view class="{{showView6?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)实验废弃物不按照学校规定要求分类收集或混杂废弃物移送至学校收集点的。(3分)</view>
+            <view class="er1">(2)存在实验室废弃物与生活垃圾混放，并作生活垃圾处理的现象。(3分)</view>
+            <view class="er1">(3)存在向下水道倾倒危险废液现象。(12分)</view>
+            <view class="er1">(4)实验室门外随意堆放危险废弃物或将危险废弃物随意丢弃在公共场所的现象。(8分)</view>
+            <view class="er1">(5)开展涉及有毒有害试剂的实验时，实验室通风未安装有毒有害气体吸收或处理装置(如活性炭、光催化分解、水喷淋等)而随意排放有毒有害、恶臭气体现象。(6分)</view>
+            <view class="er1">(6)擅自转移或偷运实验室危险废弃物现象。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san61">
+                     <view class="picker" style='{{itemName.k61 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k61]}}
+                              </view>
+                  </view>
+                  <view class="san62">
+                     <view class="picker" style='{{itemName.k62 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k62]}}
+                              </view>
+                  </view>
+                  <view class="san63">
+                     <view class="picker" style='{{itemName.k63 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k63]}}
+                              </view>
+                  </view>
+                  <view class="san64">
+                     <view class="picker" style='{{itemName.k64 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k64]}}
+                              </view>
+                  </view>
+                  <view class="san65">
+                     <view class="picker" style='{{itemName.k65 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k65]}}
+                              </view>
+                  </view>
+                  <view class="san66">
+                     <view class="picker" style='{{itemName.k66 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k66]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第七部分 -->
+   <view >
+     <button bindtap="onChangeShowState7" style='{{itemName.k71+itemName.k72+itemName.k73==6 ? "color : black":"color : red"}}'>{{showView?'7.冰箱管理':'7.冰箱管理'}}</button>
+   </view>
+   <view class="{{showView7?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)使用普通冰箱贮存危险化学品(特别易燃易爆等试剂)。(12分)</view>
+            <view class="er1">(2)冰箱内存放的物品无明确标识(包括品名、使用人、日期等)或试剂瓶不密封甚至敞开或放置非科研用食品。(3分)</view>
+            <view class="er1">(3)存在冰箱超期服役现象(一般使用年限控制为10年)。(需要继续使用者须向学院学校报备，并签订责任承诺书)(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san71">
+                     <view class="picker" style='{{itemName.k71 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k71]}}
+                              </view>
+                  </view>
+                  <view class="san72">
+                     <view class="picker" style='{{itemName.k72 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k72]}}
+                              </view>
+                  </view>
+                  <view class="san73">
+                     <view class="picker" style='{{itemName.k73 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k73]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第八部分 -->
+   <view >
+     <button bindtap="onChangeShowState8" style='{{itemName.k81+itemName.k82+itemName.k83+itemName.k84+itemName.k85==10 ? "color : black":"color : red"}}'>{{showView?'8.气体钢瓶':'8.气体钢瓶'}}</button>
+   </view>
+   <view class="{{showView8?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)存在气体钢瓶未固定现象，或靠近配电箱、插座、烘箱等热源。(4分)</view>
+            <view class="er1">(2)实验室内存放过期废弃钢瓶。(2分)</view>
+            <view class="er1">(3)存在氧气钢瓶等助燃性气体与可燃性气体混放现象。(6分)</view>
+            <view class="er1">(4)使用气体钢瓶放在走廊、大厅等公共场所现象。(4分)</view>
+            <view class="er1">(5)大量使用气体钢瓶的实验室存在管路破损或老化现象；存在未定期进行气体泄漏检查；存在使用多条气体管路的房间未张贴详细管路图的现象。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er82">备注</text>
+                  <view class="san81">
+                     <view class="picker" style='{{itemName.k81 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k81]}}
+                              </view>
+                  </view>
+                  <view class="san82">
+                     <view class="picker" style='{{itemName.k82 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k82]}}
+                              </view>
+                  </view>
+                  <view class="san83">
+                     <view class="picker" style='{{itemName.k83 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k83]}}
+                              </view>
+                  </view>
+                  <view class="san84">
+                     <view class="picker" style='{{itemName.k84 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k84]}}
+                              </view>
+                  </view>
+                  <view class="san85">
+                     <view class="picker" style='{{itemName.k85 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k85]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第九部分 -->
+   <view >
+     <button bindtap="onChangeShowState9" style='{{itemName.k91+itemName.k92+itemName.k93+itemName.k94+itemName.k95+itemName.k96+itemName.k97==14 ? "color : black":"color : red"}}'>{{showView?'9.设备安全':'9.设备安全'}}</button>
+   </view>
+   <view class="{{showView9?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)对于高温、高压、高速运动、电磁辐射等特殊设备，有培训要求的操作者无培训上岗；使用场所无安全警示标识或警戒线或配备安全防护设施(如防护罩、防护栏、自屏蔽设施等)不到位。(12分)</view>
+            <view class="er1">(2)烘箱、电阻炉存在超期(使用期限为12年)服役现象，或其周围存放气体钢瓶、易燃易爆化学品、反应装置等。(12分)</view>
+            <view class="er1">(3)使用的烘箱、电阻炉有故障、破损等现象，放置的位置、高度不合适，不方便操作。(4分)</view>
+            <view class="er1">(4)使用中的烘箱、电阻炉等加热设备无人值守或无实时监控。(6分)</view>
+            <view class="er1">(5)大型精密仪器无安全防护措施，无安全应急预案，无操作说明。(6分)</view>
+            <view class="er1">(6)涉及的特种设备(行车、锅炉等)无年检报告，操作人员无培训上岗。(12分)</view>
+            <view class="er1">(7)使用完电吹风、电热枪等未及时拔除电源插头现象。(4分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san91">
+                     <view class="picker" style='{{itemName.k91 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k91]}}
+                              </view>
+                  </view>
+                  <view class="san92">
+                     <view class="picker" style='{{itemName.k92 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k92]}}
+                              </view>
+                  </view>
+                  <view class="san93">
+                     <view class="picker" style='{{itemName.k93 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k93]}}
+                              </view>
+                  </view>
+                  <view class="san94">
+                     <view class="picker" style='{{itemName.k94 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k94]}}
+                              </view>
+                  </view>
+                  <view class="san95">
+                     <view class="picker" style='{{itemName.k95 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k95]}}
+                              </view>
+                  </view>
+                  <view class="san96">
+                     <view class="picker" style='{{itemName.k96 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k96]}}
+                              </view>
+                  </view>
+                  <view class="san97">
+                     <view class="picker" style='{{itemName.k97 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k97]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十部分 -->
+   <view >
+     <button bindtap="onChangeShowState10" style='{{itemName.k101+itemName.k102+itemName.k103+itemName.k104+itemName.k105==10 ? "color : black":"color : red"}}'>{{showView?'10.个人防护':'10.个人防护'}}</button>
+   </view>
+   <view class="{{showView10?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)在实验室场所存在穿拖鞋、高跟鞋、短裤的现象。(4分)</view>
+            <view class="er1">(2)进入实验室不穿戴实验服或防护服，进行有危险性的化学实验操作时未佩戴橡胶手套、防护眼镜等。(4分)</view>
+            <view class="er1">(3)涉辐人员未佩带个人剂量计上岗作业或配备的剂量计平时都放在实验室里。(3分)</view>
+            <view class="er1">(4)高速切削机械操作，操作人员存在未穿好工作服、戴好防护眼镜。(6分)</view>
+            <view class="er1">(5)进行机械(特别是旋转机械)作业时长发人员未戴工作帽，工作场所人员系长围巾、戴领带、戴手镯等配饰物。(4分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san101">
+                     <view class="picker" style='{{itemName.k101 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k101]}}
+                              </view>
+                  </view>
+                  <view class="san102">
+                     <view class="picker" style='{{itemName.k102 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k102]}}
+                              </view>
+                  </view>
+                  <view class="san103">
+                     <view class="picker" style='{{itemName.k103 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k103]}}
+                              </view>
+                  </view>
+                  <view class="san104">
+                     <view class="picker" style='{{itemName.k104 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k104]}}
+                              </view>
+                  </view>
+                  <view class="san105">
+                     <view class="picker" style='{{itemName.k105 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k105]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十一部分 -->
+   <view >
+     <button bindtap="onChangeShowState11" style='{{itemName.k111+itemName.k112+itemName.k113+itemName.k114+itemName.k115+itemName.k116==12 ? "color : black":"color : red"}}'>{{showView?'11.动物及病原微生物':'11.动物及病原微生物'}}</button>
+   </view>
+   <view class="{{showView11?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)采购高致病性病原微生物菌(毒)种，须报学校审批，经行业主管部门批准。存在未批未报备现象。(12分)</view>
+            <view class="er1">(2)自行分离高致病性病原微生物，必须报学校审批和备案，并报行业主管部门批准。存在未报未批就开展实验的现象。(12分)</view>
+            <view class="er1">(3)开展病原微生物(高致病、低致病等)实验必须在相应的安全等级实验室中进行。没有相应实验室条件就开展实验的现象。(12分)</view>
+            <view class="er1">(4)病原微生物菌(毒)种保存在带锁冰箱或柜子中，高致病性病原微生物实行双人双锁管理。在实验过程中没有保存实验使用记录或存在销毁记录的现象。(6分)</view>
+            <view class="er1">(5)未经批准或未取得实验动物使用许可证私自开展动物饲养和动物实验。(12分)</view>
+            <view class="er1">(6)涉及病原或高致病性微生物废弃物未进行高温高压灭菌或化学浸泡就移送处置现象。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san111">
+                     <view class="picker" style='{{itemName.k111== 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k111]}}
+                              </view>
+                  </view>
+                  <view class="san112">
+                     <view class="picker" style='{{itemName.k112 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k112]}}
+                              </view>
+                  </view>
+                  <view class="san113">
+                     <view class="picker" style='{{itemName.k113 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k113]}}
+                              </view>
+                  </view>
+                  <view class="san114">
+                     <view class="picker" style='{{itemName.k114 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k114]}}
+                              </view>
+                  </view>
+                  <view class="san115">
+                     <view class="picker" style='{{itemName.k115 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k115]}}
+                              </view>
+                  </view>
+                  <view class="san116">
+                     <view class="picker" style='{{itemName.k116 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k116]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十二部分 -->
+   <view >
+     <button bindtap="onChangeShowState12" style='{{itemName.k121+itemName.k122+itemName.k123+itemName.k124+itemName.k125==10 ? "color : black":"color : red"}}'>{{showView?'12.其它':'12.其它'}}</button>
+   </view>
+   <view class="{{showView12?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)根据实验反应情况存在安全风险须有人值守的实验，在实验过程中存在人员离岗现象。(6分)</view>
+            <view class="er1">(2)涉及外来人员(进修、企业外派或访问学者)进实验室存在没有审批和备案手续。(6分)</view>
+            <view class="er1">(3)需要昼夜连续实验的项目没有审批和备案手续，未安排人员值班。(12分)</view>
+            <view class="er1">(4)企业在校内开展的中试试验有产生有害或刺激性气体，产生的危废无申报手续。(12分)</view>
+            <view class="er1">(5)实验室内存在未经审批的留宿现象。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san121">
+                     <view class="picker" style='{{itemName.k121 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k121]}}
+                              </view>
+                  </view>
+                  <view class="san122">
+                     <view class="picker" style='{{itemName.k122 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k122]}}
+                              </view>
+                  </view>
+                  <view class="san123">
+                     <view class="picker" style='{{itemName.k123 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k123]}}
+                              </view>
+                  </view>
+                  <view class="san124">
+                     <view class="picker" style='{{itemName.k124 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k124]}}
+                              </view>
+                  </view>
+                  <view class="san125">
+                     <view class="picker" style='{{itemName.k125 == 2 ? "color : black":"color : red"}}'>
+                         {{array1[itemName.k125]}}
+                              </view>
+                  </view>
+               </view>
+      </view>
+   </view>
+</view>                                                           
+                  </view>
+                  <view class="sum">
+                     <text class="kf">扣分合计</text>
+                     <text class="num">{{itemName.sum}}</text>
+                  </view>
+                  <view class="zhj">
+                     <view class="bt1">整改情况</view>
+
+                  </view>
+
+                  <view class="bt2">
+                     <view class="word-hot2">
+                        <textarea class="text11" value="{{itemName.pro1}}" maxlength="-1" disabled="flase" style='{{itemName.pro1 == "" ? "display:none": "display:true" }}'></textarea>
+                     </view>
+                  </view>
+                  <view class="tup">
+                     <view wx:for="{{itemName.fileIDs1}}" wx:key="index" class="pict1">
+                        <image class="c" bindtap="preview1" src="{{item}}" data-src="{{item}}" data-id="{{itemName._id}}"></image>
+                     </view>
+                  </view>
+
+               </view>
+             
+            </view>
+          
+         
+      </scroll-view>
+
+
+   </view>
+
+
+</view>

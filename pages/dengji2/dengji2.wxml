@@ -1,0 +1,810 @@
+<!-- 第一个区域：检查员 -->
+<view class="jianchayuan">
+  <text>检查员：</text>
+  <text >{{name1}}</text>
+</view>
+
+<!-- 第二个区域：房间 -->
+<view class='room'>
+  <text>房间：</text>
+  <input type='text' placeholder='请输入房间号如:JXC303' model:value="{{getroom}}" bindinput="roomname"></input>
+</view>
+
+<!-- 第四个区域：具体问题 -->
+<view class="">
+  <text class="wenti">问题：</text>
+   <textarea class="detailText" 
+    placeholder="请输入具体违规人员、位置及问题"
+    model:value="{{details}}">
+  </textarea>
+</view>
+
+<!-- 第五个区域：照片 -->
+<view class="title">
+  <text>照片：</text>
+</view>
+
+<view class="item3">
+    <view class='img-box' bindtap='c' wx:if="{{imgbox.length<9}}">
+        <image class='img' src='../../images/tu4.png'></image> 
+    </view> 
+
+    <block wx:key="imgbox" wx:for="{{imgbox}}">
+        <view class='img-box'>
+                <image class='img' src='{{item}}'></image>
+                <view class='img-delect' data-deindex='{{index}}' bindtap='imgDelete'>
+                    <image class='img1' src='../../images/tu3.png'></image>  
+                </view>
+        </view>
+    </block> 
+</view>
+
+<!-- 第三个区域：违规条例 -->
+<view class="wenti">
+  <text>违规条例：</text>
+</view>
+
+<view class="zuida">
+   <view >
+     <button bindtap="onChangeShowState1">{{showView?'1.规章制度':'1.规章制度'}}</button>
+   </view>
+   <view class="{{showView1?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">规章制度</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+            </view>
+            <view class="er1">(1)没有或不健全符合学科实际的安全管理制度、安全自查制度和值班值日制度，并没有自查和值日台本记录。(1分)</view>
+            <view class="er1">(2)没有危险性实验及仪器操作规程，未张贴安全注意事项，没有张贴适合本实验室及实验工作突发性事故的应急预案。(1分)</view>
+            <view class="er1">(3)实验室房间门口未挂有安全信息牌(安全责任人、涉及危险类别、防护措施和有效应急联系电话等)或信息不准确。(1分)</view>
+            <view class="er1">(4)学生进入实验室开展实验前，未取得通过学院实验室安全培训或学校安全网考试而核发的实验室准入证。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san11">
+                     <picker bindchange="bindPickerChange11" value="{{index11}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index11]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san12">
+                     <picker bindchange="bindPickerChange12" value="{{index12}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index12]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san13">
+                     <picker bindchange="bindPickerChange13" value="{{index13}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index13]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san14">
+                     <picker bindchange="bindPickerChange14" value="{{index14}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index14]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第二部分 -->
+   <view >
+     <button bindtap="onChangeShowState2">{{showView?'2.环境秩序':'2.环境秩序'}}</button>
+   </view>
+   <view class="{{showView2?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">环境秩序</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)实验室物品不分类放置，台面、柜内药品摆放杂乱，仪器设备、材料、工具等摆放零乱。(3分)</view>
+            <view class="er1">(2)实验室内废弃的物品(如纸板箱、报废设备、破旧家具桌椅等)未及时处理或清理的现象。(2分)</view>
+            <view class="er1">(3)实验室内有抽烟、饮食、烧煮食物、使用可燃性蚊香等现象。(3分)</view>
+            <view class="er1">(4)实验室内堆放或存放与实验无关的私人物品。(2分)</view>
+            <view class="er1">(5)实验室门窗、地面、桌面卫生差。(2分)</view>
+            <view class="er1">(6)未将实验室钥匙或门禁密钥备份至学院办公室(值班室)。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san21">
+                     <picker bindchange="bindPickerChange21" value="{{index21}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index21]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san22">
+                     <picker bindchange="bindPickerChange22" value="{{index22}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index22]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san23">
+                     <picker bindchange="bindPickerChange23" value="{{index23}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index23]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san24">
+                     <picker bindchange="bindPickerChange24" value="{{index24}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index24]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san25">
+                     <picker bindchange="bindPickerChange25" value="{{index25}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index25]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san26">
+                     <picker bindchange="bindPickerChange26" value="{{index26}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index26]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第三部分 -->
+   <view >
+     <button bindtap="onChangeShowState3">{{showView?'3.消防安全':'3.消防安全'}}</button>
+   </view>
+   <view class="{{showView3?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">消防安全</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+         </view>
+         <view class="er1">(1)实验室内消防器材(包括灭火器、灭火毯、急救药箱、消防锤、消防自救呼吸器等)未按要求数量配置或类型配置不正确、位置设置不合适。(6分)</view>
+            <view class="er1">(2)灭火器存在过期、压力不足、外观损坏锈蚀、被遮挡等现象，未及时检查记录并更换。(3分)</view>
+            <view class="er1">(3)消防疏散通道、安全出口堆放仪器、杂物、停放电动车、自行车、手推车等影响畅通，门窗上设置影响逃生和灭火救援的障碍物。(6分)</view>
+            <view class="er1">(4)实验室内未经允许(报备)使用明火电炉以及使用大功率取暖电器现象。(12分)</view>
+         </view>
+         <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san31">
+                     <picker bindchange="bindPickerChange31" value="{{index31}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index31]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san32">
+                     <picker bindchange="bindPickerChange32" value="{{index32}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index32]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san33">
+                     <picker bindchange="bindPickerChange33" value="{{index33}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index33]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san34">
+                     <picker bindchange="bindPickerChange34" value="{{index34}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index34]}}
+                     </view>
+                     </picker>
+                  </view>
+         </view>
+      </view>
+   </view>
+<!-- 第四部分 -->
+   <view >
+     <button bindtap="onChangeShowState4">{{showView?'4.水电安全':'4.水电安全'}}</button>
+   </view>
+   <view class="{{showView4?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">水电安全</text>
+      </view>
+      <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>
+            </view>
+            <view class="er1">(1)存在水槽损坏、下水道堵塞现象；使用水龙头、水管、皮管(特别是冷凝冷却系统的橡胶管接口处)存在破损、老化现象；存在自来水开着无人在岗现象。(3分)</view>
+            <view class="er1">(2)电线老化、插头破损、插头插座不匹配或多个接线板串联及接线板未固定直接放在地面的现象。(8分)</view>
+            <view class="er1">(3) 私拉电线、私自改装电源线路。(12分)</view>
+            <view class="er1">(4)高压、大电流等强电实验室未设定安全距离，未按规定设置安全警示牌、安全信号灯、联动式警铃、门锁，未设有安全隔离装置或屏蔽遮拦。(4分)</view>
+            <view class="er1">(5)强电设备在断电操作时，未在电源箱处设置明显警示标识(防止他人随意合闸)。(4分)</view>
+      </view>
+         <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san41">
+                     <picker bindchange="bindPickerChange41" value="{{index41}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index41]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san42">
+                     <picker bindchange="bindPickerChange42" value="{{index42}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index42]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san43">
+                     <picker bindchange="bindPickerChange43" value="{{index43}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index43]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san44">
+                     <picker bindchange="bindPickerChange42" value="{{index44}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index44]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san45">
+                     <picker bindchange="bindPickerChange45" value="{{index45}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index45]}}
+                     </view>
+                     </picker>
+                  </view>
+         </view>
+      </view>
+   </view>
+<!-- 第五部分 -->
+   <view >
+     <button bindtap="onChangeShowState5">{{showView?'5.化学试剂':'5.化学试剂'}}</button>
+   </view>
+   <view class="{{showView5?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">化学试剂</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)使用的试剂存放不符合安全保管条件，实验室内未张贴使用化学品目录或台帐。(3分)</view>
+            <view class="er1">(2)使用的危险化学品或放射性物质或致病性微生物未按照有关规定存放在安全位置(如加锁的专用柜子或专门的贮存室)，并未设危险警示标志。(8分)</view>
+            <view class="er1">(3)存在标签脱落、模糊或无标签的化学试剂等现象。(3分)</view>
+            <view class="er1">(4)存在试剂瓶盖开口放置的现象。(3分)</view>
+            <view class="er1">(5)有过期试剂或药品。(2分)</view>
+            <view class="er1">(6)50米2实验室内存放危化品超过100L或100kg，其中易燃易爆性化学品超过50L或50kg，且单一包装容器大于20L或20kg的现象。(6分)</view>
+            <view class="er1">(7)管制类(剧毒、易制毒、易制爆、爆炸品、麻醉药品、精神药品、医疗用毒性药品等)试剂未设专人保管、使用无明细登记台账、安全防范措施不到位等现象。(6分)</view>
+            <view class="er1">(8)剧毒品、易制毒品、易制爆品和爆炸品等购买前未经学校审批，未经公安部门批准或备案。私自接收或获取外单位上述管制类化学品。(12分)</view>
+            <view class="er1">(9)存在未经报备的试剂药品。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san51">
+                     <picker bindchange="bindPickerChange51" value="{{index51}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index51]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san52">
+                     <picker bindchange="bindPickerChange52" value="{{index52}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index52]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san53">
+                     <picker bindchange="bindPickerChange53" value="{{index53}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index53]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san54">
+                     <picker bindchange="bindPickerChange54" value="{{index54}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index54]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san55">
+                     <picker bindchange="bindPickerChange55" value="{{index55}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index55]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san56">
+                     <picker bindchange="bindPickerChange56" value="{{index56}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index56]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san57">
+                     <picker bindchange="bindPickerChange57" value="{{index57}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index57]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san58">
+                     <picker bindchange="bindPickerChange58" value="{{index58}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index58]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san59">
+                     <picker bindchange="bindPickerChange59" value="{{index59}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index59]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第六部分 -->
+   <view >
+     <button bindtap="onChangeShowState6">{{showView?'6.三废排放':'6.三废排放'}}</button>
+   </view>
+   <view class="{{showView6?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">三废排放</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)实验废弃物不按照学校规定要求分类收集或混杂废弃物移送至学校收集点的。(3分)</view>
+            <view class="er1">(2)存在实验室废弃物与生活垃圾混放，并作生活垃圾处理的现象。(3分)</view>
+            <view class="er1">(3)存在向下水道倾倒危险废液现象。(12分)</view>
+            <view class="er1">(4)实验室门外随意堆放危险废弃物或将危险废弃物随意丢弃在公共场所的现象。(8分)</view>
+            <view class="er1">(5)开展涉及有毒有害试剂的实验时，实验室通风未安装有毒有害气体吸收或处理装置(如活性炭、光催化分解、水喷淋等)而随意排放有毒有害、恶臭气体现象。(6分)</view>
+            <view class="er1">(6)擅自转移或偷运实验室危险废弃物现象。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san61">
+                     <picker bindchange="bindPickerChange61" value="{{index61}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index61]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san62">
+                     <picker bindchange="bindPickerChange62" value="{{index62}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index62]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san63">
+                     <picker bindchange="bindPickerChange63" value="{{index63}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index63]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san64">
+                     <picker bindchange="bindPickerChange64" value="{{index64}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index64]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san65">
+                     <picker bindchange="bindPickerChange65" value="{{index65}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index65]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san66">
+                     <picker bindchange="bindPickerChange66" value="{{index66}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index66]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第七部分 -->
+   <view >
+     <button bindtap="onChangeShowState7">{{showView?'7.冰箱管理':'7.冰箱管理'}}</button>
+   </view>
+   <view class="{{showView7?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">冰箱管理</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)使用普通冰箱贮存危险化学品(特别易燃易爆等试剂)。(12分)</view>
+            <view class="er1">(2)冰箱内存放的物品无明确标识(包括品名、使用人、日期等)或试剂瓶不密封甚至敞开或放置非科研用食品。(3分)</view>
+            <view class="er1">(3)存在冰箱超期服役现象(一般使用年限控制为10年)。(需要继续使用者须向学院学校报备，并签订责任承诺书)(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san71">
+                     <picker bindchange="bindPickerChange71" value="{{index71}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index71]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san72">
+                     <picker bindchange="bindPickerChange72" value="{{index72}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index72]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san73">
+                     <picker bindchange="bindPickerChange73" value="{{index73}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index73]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第八部分 -->
+   <view >
+     <button bindtap="onChangeShowState8">{{showView?'8.气体钢瓶':'8.气体钢瓶'}}</button>
+   </view>
+   <view class="{{showView8?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">气体钢瓶</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)存在气体钢瓶未固定现象，或靠近配电箱、插座、烘箱等热源。(4分)</view>
+            <view class="er1">(2)实验室内存放过期废弃钢瓶。(2分)</view>
+            <view class="er1">(3)存在氧气钢瓶等助燃性气体与可燃性气体混放现象。(6分)</view>
+            <view class="er1">(4)使用气体钢瓶放在走廊、大厅等公共场所现象。(4分)</view>
+            <view class="er1">(5)大量使用气体钢瓶的实验室存在管路破损或老化现象；存在未定期进行气体泄漏检查；存在使用多条气体管路的房间未张贴详细管路图的现象。(6分)</view>
+         </view>
+               <view class="san">
+                  <text class="er82">备注</text>
+                  <view class="san81">
+                     <picker bindchange="bindPickerChange81" value="{{index21}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index81]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san82">
+                     <picker bindchange="bindPickerChange82" value="{{index82}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index82]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san83">
+                     <picker bindchange="bindPickerChange83" value="{{index83}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index83]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san84">
+                     <picker bindchange="bindPickerChange84" value="{{index84}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index84]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san85">
+                     <picker bindchange="bindPickerChange85" value="{{index85}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index85]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第九部分 -->
+   <view >
+     <button bindtap="onChangeShowState9">{{showView?'9.设备安全':'9.设备安全'}}</button>
+   </view>
+   <view class="{{showView9?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">设备安全</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)对于高温、高压、高速运动、电磁辐射等特殊设备，有培训要求的操作者无培训上岗；使用场所无安全警示标识或警戒线或配备安全防护设施(如防护罩、防护栏、自屏蔽设施等)不到位。(12分)</view>
+            <view class="er1">(2)烘箱、电阻炉存在超期(使用期限为12年)服役现象，或其周围存放气体钢瓶、易燃易爆化学品、反应装置等。(12分)</view>
+            <view class="er1">(3)使用的烘箱、电阻炉有故障、破损等现象，放置的位置、高度不合适，不方便操作。(4分)</view>
+            <view class="er1">(4)使用中的烘箱、电阻炉等加热设备无人值守或无实时监控。(6分)</view>
+            <view class="er1">(5)大型精密仪器无安全防护措施，无安全应急预案，无操作说明。(6分)</view>
+            <view class="er1">(6)涉及的特种设备(行车、锅炉等)无年检报告，操作人员无培训上岗。(12分)</view>
+            <view class="er1">(7)使用完电吹风、电热枪等未及时拔除电源插头现象。(4分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san91">
+                     <picker bindchange="bindPickerChange91" value="{{index91}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index91]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san92">
+                     <picker bindchange="bindPickerChange92" value="{{index92}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index92]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san93">
+                     <picker bindchange="bindPickerChange93" value="{{index93}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index93]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san94">
+                     <picker bindchange="bindPickerChange94" value="{{index94}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index94]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san95">
+                     <picker bindchange="bindPickerChange95" value="{{index95}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index95]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san96">
+                     <picker bindchange="bindPickerChange96" value="{{index96}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index96]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san97">
+                     <picker bindchange="bindPickerChange97" value="{{index97}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index97]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十部分 -->
+   <view >
+     <button bindtap="onChangeShowState10">{{showView?'10.个人防护':'10.个人防护'}}</button>
+   </view>
+   <view class="{{showView10?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">个人防护</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)在实验室场所存在穿拖鞋、高跟鞋、短裤的现象。(4分)</view>
+            <view class="er1">(2)进入实验室不穿戴实验服或防护服，进行有危险性的化学实验操作时未佩戴橡胶手套、防护眼镜等。(4分)</view>
+            <view class="er1">(3)涉辐人员未佩带个人剂量计上岗作业或配备的剂量计平时都放在实验室里。(3分)</view>
+            <view class="er1">(4)高速切削机械操作，操作人员存在未穿好工作服、戴好防护眼镜。(6分)</view>
+            <view class="er1">(5)进行机械(特别是旋转机械)作业时长发人员未戴工作帽，工作场所人员系长围巾、戴领带、戴手镯等配饰物。(4分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san101">
+                     <picker bindchange="bindPickerChange101" value="{{index101}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index101]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san102">
+                     <picker bindchange="bindPickerChange102" value="{{index102}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index102]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san103">
+                     <picker bindchange="bindPickerChange103" value="{{index103}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index103]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san104">
+                     <picker bindchange="bindPickerChange104" value="{{index104}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index104]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san105">
+                     <picker bindchange="bindPickerChange105" value="{{index105}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index105]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十一部分 -->
+   <view >
+     <button bindtap="onChangeShowState11">{{showView?'11.动物及病原微生物':'11.动物及病原微生物'}}</button>
+   </view>
+   <view class="{{showView11?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">动物及病原微生物</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)采购高致病性病原微生物菌(毒)种，须报学校审批，经行业主管部门批准。存在未批未报备现象。(12分)</view>
+            <view class="er1">(2)自行分离高致病性病原微生物，必须报学校审批和备案，并报行业主管部门批准。存在未报未批就开展实验的现象。(12分)</view>
+            <view class="er1">(3)开展病原微生物(高致病、低致病等)实验必须在相应的安全等级实验室中进行。没有相应实验室条件就开展实验的现象。(12分)</view>
+            <view class="er1">(4)病原微生物菌(毒)种保存在带锁冰箱或柜子中，高致病性病原微生物实行双人双锁管理。在实验过程中没有保存实验使用记录或存在销毁记录的现象。(6分)</view>
+            <view class="er1">(5)未经批准或未取得实验动物使用许可证私自开展动物饲养和动物实验。(12分)</view>
+            <view class="er1">(6)涉及病原或高致病性微生物废弃物未进行高温高压灭菌或化学浸泡就移送处置现象。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san111">
+                     <picker bindchange="bindPickerChange111" value="{{index111}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index111]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san112">
+                     <picker bindchange="bindPickerChange112" value="{{index112}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index112]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san113">
+                     <picker bindchange="bindPickerChange113" value="{{index113}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index113]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san114">
+                     <picker bindchange="bindPickerChange114" value="{{index114}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index114]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san115">
+                     <picker bindchange="bindPickerChange115" value="{{index115}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index115]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san116">
+                     <picker bindchange="bindPickerChange116" value="{{index116}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index116]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+<!-- 第十二部分 -->
+   <view >
+     <button bindtap="onChangeShowState12">{{showView?'12.其它':'12.其它'}}</button>
+   </view>
+   <view class="{{showView12?'bright789_view_show':'bright789_view_hide'}}">
+      <view class="xiangmu">
+      <view class="yi">
+      <text class="yi1">环境秩序</text>
+      </view>
+         <view class="er">
+            <view class="tou">
+            <text class="er11">扣分依据</text>       
+            </view>
+            <view class="er1">(1)根据实验反应情况存在安全风险须有人值守的实验，在实验过程中存在人员离岗现象。(6分)</view>
+            <view class="er1">(2)涉及外来人员(进修、企业外派或访问学者)进实验室存在没有审批和备案手续。(6分)</view>
+            <view class="er1">(3)需要昼夜连续实验的项目没有审批和备案手续，未安排人员值班。(12分)</view>
+            <view class="er1">(4)企业在校内开展的中试试验有产生有害或刺激性气体，产生的危废无申报手续。(12分)</view>
+            <view class="er1">(5)实验室内存在未经审批的留宿现象。(12分)</view>
+         </view>
+               <view class="san">
+                  <text class="er12">备注</text>
+                  <view class="san121">
+                     <picker bindchange="bindPickerChange121" value="{{index121}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index121]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san122">
+                     <picker bindchange="bindPickerChange122" value="{{index122}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index122]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san123">
+                     <picker bindchange="bindPickerChange123" value="{{index123}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index123]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san124">
+                     <picker bindchange="bindPickerChange124" value="{{index124}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index124]}}
+                     </view>
+                     </picker>
+                  </view>
+                  <view class="san125">
+                     <picker bindchange="bindPickerChange125" value="{{index125}}" range="{{array}}">
+                     <view class="picker">
+                     {{array[index125]}}
+                     </view>
+                     </picker>
+                  </view>
+               </view>
+      </view>
+   </view>
+</view>
+
+<view class="sum">
+<text class="kf">扣分合计</text>
+<text class="num">{{sum}}</text>
+</view>
+
+
+
+
+<!-- 第六个区域：提交 -->
+<button class="mini-btn" bindtap="tijiao">提交</button>
+
+
+
+
